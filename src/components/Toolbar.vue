@@ -1,0 +1,73 @@
+<template lang='pug'>
+  #toolbar
+    router-link(to='/')
+      i.glyphicon.glyphicon-user(data-popover='true')
+    i.glyphicon.glyphicon-phone-alt(@click='openNewCallModal')
+    //- router-link(to='/')
+    //-   i.glyphicon.glyphicon-home
+    i.glyphicon.glyphicon-plus()
+    router-link(to='/session')
+      i.glyphicon.glyphicon-th-list
+    router-link(to='/taskmanager')
+      i.glyphicon.glyphicon-list-alt
+    //- router-link(to='/star')
+    //-   i.glyphicon.glyphicon-star
+    i.glyphicon.glyphicon-remove
+    router-link(to='/contact')
+      i.glyphicon.glyphicon-book
+    router-link(to='/notes')
+      i.glyphicon.glyphicon-edit
+    router-link(to='/calendar')
+      i.glyphicon.glyphicon-calendar
+    router-link(to='/message')
+      i.glyphicon.glyphicon-download-alt
+    i.glyphicon.glyphicon-envelope()
+    router-link(to='/history')
+      i.glyphicon.glyphicon-time
+    router-link(to='/login')
+      i.glyphicon.glyphicon-off()
+    router-link(to='/weather')
+      i.glyphicon.glyphicon-cloud
+    i.glyphicon.glyphicon-share
+    i.glyphicon.glyphicon-blackboard()
+</template>
+
+<script>
+import { mapActions } from 'vuex'
+export default {
+  name: 'toolbar',
+  methods: {
+    ...mapActions(['toggleNewCallModal']),
+    openNewCallModal () {
+      this.toggleNewCallModal()
+    }
+  }
+}
+</script>
+
+<style scoped>
+#toolbar {
+  width: 80px;
+  height: 100vh;
+  float: left;
+  background-color: #30414D;
+  color: #767676;
+  padding: 35px 25px 25px 25px;
+  overflow: scroll;
+}
+#toolbar i {
+  font-size: 30px;
+  margin-bottom: 35px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+#toolbar i:hover {
+  opacity: 1;
+}
+
+#toolbar a{
+  color: #767676;
+}
+</style>
