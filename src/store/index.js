@@ -74,6 +74,35 @@ const store = new Vuex.Store({
     },
     [types.CHANGE_DIAL_VALUE] (state, dialValue) {
       state.dialValue = dialValue
+    },
+    [types.SET_SELFINFO] (state, selfinfo) {
+      state.selfinfo = selfinfo
+    },
+    [types.ADD_TASK] (state, newTask) {
+      state.tasks.push(newTask)
+    },
+    [types.ADD_NOTE] (state) {
+      console.log('note added')
+      const newNote = {
+        text: 'New note',
+        favorite: false,
+        startTime: 1520692473
+      }
+      state.notes.push(newNote)
+      state.activeNote = newNote
+    },
+    [types.EDIT_NOTE] (state, text) {
+      state.activeNote.text = text
+    },
+    [types.DELETE_NOTE] (state) {
+      state.notes.$remove(state.activeNote)
+      state.activeNote = state.notes[0]
+    },
+    [types.TOGGLE_FAVORITE] (state) {
+      state.activeNote.favorite = !state.activeNote.favorite
+    },
+    [types.SET_ACTIVE_NOTE] (state, note) {
+      state.activeNote = note
     }
   }
 })

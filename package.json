@@ -2,7 +2,7 @@
   "name": "experimental-client-6",
   "version": "0.0.1",
   "description": "A reactive Office Application Project",
-  "author": "Rasim Avci <rasimavci@gmail.com>",
+  "author": "maiki <maikinahara@gmail.com> & Rasim Avci <rasimavci@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

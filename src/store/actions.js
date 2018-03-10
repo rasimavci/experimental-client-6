@@ -43,3 +43,28 @@ export const addConversation = ({ commit }, conversation) => {
 export const changeDialValue = ({ commit }, dialValue) => {
   commit(types.CHANGE_DIAL_VALUE, dialValue)
 }
+
+export const addTask = ({ commit }, newTask) => {
+  commit(types.ADD_TASK, newTask)
+}
+
+export const addNote = ({ commit }, newNote) => {
+  console.log('adding note')
+  commit(types.ADD_NOTE, newNote)
+}
+
+export const editNote = ({ commit }, e) => {
+  commit(types.EDIT_NOTE, e.target.value)
+}
+
+export const deleteNote = ({ commit }) => {
+  commit(types.DELETE_NOTE)
+}
+
+export const updateActiveNote = ({ commit }, note) => {
+  commit(types.SET_ACTIVE_NOTE, note)
+}
+
+export const toggleFavorite = ({ commit }) => {
+  commit(types.TOGGLE_FAVORITE)
+}

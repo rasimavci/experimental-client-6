@@ -1,23 +1,23 @@
 <template lang='pug'>
   #history
     md-toolbar.md-primary(:md-elevation='1')
-      span.md-titleFull History
+      h3.md-title(style='flex: 1') Sessions
+      span.md-titleFull All Sessions
+      md-icon.md-primary list
     .call-history-container.md-layout.md-gutter.md-alignment-left
       ul(class="md-layout-item md-size-50 md-medium-size-10 md-small-size-10 md-xsmall-size-100")
-        li(v-for='call in callHistory', :key='call.recordId')
+        li(v-for='call in calls', :key='call.recordId')
           md-list.md-double-line
-            md-subheader Phone
+            md-subheader Call
             md-list-item
               md-button.md-icon-button.md-list-action
-                md-icon.md-primary face
+                md-icon.md-primary phone
               .md-list-item-text
-                span {{call.callerDisplayNumber}}
-                span {{moment(parseInt(call.startTime)).format('MMMM Do YYYY, h:mm:ss a')}}
-                span {{call.direction}}
+                span {{call.calleeName}}
+                span {{moment(parseInt(call.startTime)).format('h:mm:ss a')}}
+                span {{call.state}}
               md-button.md-icon-button.md-list-action
-                span {{hmm}}
-                md-icon call_made
-
+                md-icon phone
 </template>
 
 <script>
@@ -33,22 +33,22 @@
     }
 */
 import Moment from 'moment'
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  name: 'history',
+  name: 'session',
   data () {
     return {
       moment: Moment
     }
   },
   mounted () {
-    this.$kandyJS.getCallHistory()
+    // this.$kandyJS.getCallHistory()
     let m = Moment
     console.log(m)
     debugger
   },
   computed: {
-    ...mapGetters(['callHistory'])
+    ...mapGetters(['calls'])
   },
   methods: {
 
@@ -57,13 +57,15 @@ export default {
 </script>
 
 <style scoped>
-#history{
-    height: 100vh;
+#history {
+  height: 100vh;
   overflow-y: scroll;
 }
-.call-history-container > ul{
+
+.call-history-container>ul {
   list-style-type: none;
 }
+
 li {
   list-style-type: none;
 }

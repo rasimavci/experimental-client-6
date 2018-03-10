@@ -5,19 +5,17 @@
     i.glyphicon.glyphicon-phone-alt(@click='openNewCallModal')
     //- router-link(to='/')
     //-   i.glyphicon.glyphicon-home
-    i.glyphicon.glyphicon-plus()
-    router-link(to='/session')
+    router-link(to='/sessions')
       i.glyphicon.glyphicon-th-list
-    router-link(to='/taskmanager')
+    router-link(to='/tasks')
       i.glyphicon.glyphicon-list-alt
     //- router-link(to='/star')
     //-   i.glyphicon.glyphicon-star
-    i.glyphicon.glyphicon-remove
     router-link(to='/contact')
       i.glyphicon.glyphicon-book
     router-link(to='/notes')
       i.glyphicon.glyphicon-edit
-    router-link(to='/calendar')
+    router-link(to='/schedule')
       i.glyphicon.glyphicon-calendar
     router-link(to='/message')
       i.glyphicon.glyphicon-download-alt
@@ -28,7 +26,9 @@
       i.glyphicon.glyphicon-off()
     router-link(to='/weather')
       i.glyphicon.glyphicon-cloud
+    router-link(to='/taskmanager')
     i.glyphicon.glyphicon-share
+    router-link(to='/schedule')
     i.glyphicon.glyphicon-blackboard()
 </template>
 

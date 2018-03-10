@@ -36,10 +36,10 @@ const Kandyjs = {
         Kandyjs.getDevices()
         Kandyjs.fetchCallHistory()
         Kandyjs.getMessages()
+        Kandyjs.getSelf()
       }
     })
     Kandyjs.kandy.on('call:error', err => {
-      debugger
       if (store.getters.activeCall) store.dispatch('toggleActiveCall')
       console.log('call error: ' + err)
     })
@@ -251,6 +251,10 @@ const Kandyjs = {
     }
     let message = conv.createMessage(part)
     message.send()
+  },
+  getSelf: () => {
+    let selfinfo = Kandyjs.kandy.user.getSelf()
+    store.dispatch('setSelfinfo', selfinfo)
   }
 }
 

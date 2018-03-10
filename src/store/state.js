@@ -6,12 +6,17 @@ export default {
   newCallModal: false,
   incomingCallModal: false,
   contacts: [],
+  calls: [],
   activeCall: {},
+  tasks: [],
+  activeTask: {},
+  notes: [],
+  activeNote: {},
+  selfinfo: {},
   sounds: {
     ringing: new Audio('./static/sounds/ringing.mp3')
   },
   firstState: '',
-  calls: {},
   incomingCall: {},
   devices: [],
   callHistory: [],
@@ -25,5 +30,6 @@ export default {
     remoteVideoContainer: null
   },
   conversations: [],
+  sessions: [],
   dialValue: ''
 }
