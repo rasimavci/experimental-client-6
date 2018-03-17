@@ -15,7 +15,7 @@
                 span {{moment(parseInt(call.startTime)).format('MMMM Do YYYY, h:mm:ss a')}}
                 span {{call.direction}}
               md-button.md-icon-button.md-list-action
-                span {{hmm}}
+                span {{moment(parseInt(call.startTime)).format('h:mm')}}
                 md-icon call_made
 
 </template>

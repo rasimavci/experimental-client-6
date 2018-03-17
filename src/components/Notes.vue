@@ -4,7 +4,8 @@
       h3.md-title(style='flex: 1') Notes
       md-icon.md-primary edit
     .call-history-container.md-layout.md-gutter.md-alignment-left
-      md-textarea.v-model="textarea"
+      md-field
+        md-textarea(v-model='textarea')
       md-button.md-primary(@click='addNote1') Add
       ul(class="md-layout-item md-size-50 md-medium-size-10 md-small-size-10 md-xsmall-size-100")
         li(v-for='note in notes', :key='note.recordId')
@@ -23,7 +24,7 @@
                 md-icon delete
 
     ul
-      li(v-for='note in notes', :key='note.entryId', @click='toggleDialog(contact)')
+      li(v-for='note in notes', :key='note.entryId', @click='toggleDialog(note)')
         contact-card(:contact='contact')
     md-dialog(:md-active.sync='showDialog', @md-closed='closeEdit')
       edit-note(:currentContact='currentContact', @closeEdit='closeEdit', :isNew='isNew')
@@ -53,7 +54,8 @@ export default {
       moment: Moment,
       currentContact: {},
       textarea: true,
-      showDialog: false
+      showDialog: false,
+      isNew: false
     }
   },
   components: {

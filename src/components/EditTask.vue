@@ -78,7 +78,7 @@ export default {
   },
   mounted () {
     if (!this.isNew) {
-      this.formTitle = 'Edit Note'
+      this.formTitle = 'Edit Task'
       this.contact.id = this.currentContact.entryId
       this.contact.primaryContact = this.currentContact.primaryContact ? this.currentContact.primaryContact : ''
       this.contact.firstName = this.currentContact.firstName ? this.currentContact.firstName : ''
@@ -169,7 +169,7 @@ export default {
 
 <style scoped>
 
-#editNote{
+#editTask{
   height: 100vh;
   overflow-y: scroll;
 }
