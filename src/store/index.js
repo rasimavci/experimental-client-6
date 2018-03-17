@@ -81,15 +81,15 @@ const store = new Vuex.Store({
     [types.ADD_TASK] (state, newTask) {
       state.tasks.push(newTask)
     },
-    [types.ADD_NOTE] (state) {
-      console.log('note added')
-      const newNote = {
-        text: 'New note',
+    [types.ADD_NOTE] (state, newNote) {
+      console.log('New note added ' + newNote)
+      const newNote1 = {
+        text: newNote, // 'New note',
         favorite: false,
         startTime: 1520692473
       }
-      state.notes.push(newNote)
-      state.activeNote = newNote
+      state.notes.push(newNote1)
+      state.activeNote = newNote1
     },
     [types.EDIT_NOTE] (state, text) {
       state.activeNote.text = text

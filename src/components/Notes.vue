@@ -25,7 +25,6 @@
 
     ul
       li(v-for='note in notes', :key='note.entryId', @click='toggleDialog(note)')
-        contact-card(:contact='contact')
     md-dialog(:md-active.sync='showDialog', @md-closed='closeEdit')
       edit-note(:currentContact='currentContact', @closeEdit='closeEdit', :isNew='isNew')
 
@@ -53,7 +52,7 @@ export default {
     return {
       moment: Moment,
       currentContact: {},
-      textarea: true,
+      textarea: 'Write your notes here',
       showDialog: false,
       isNew: false
     }
@@ -70,7 +69,7 @@ export default {
   methods: {
     ...mapActions(['updateActiveNote', 'addNote', 'editNote', 'deleteNote']),
     addNote1 () {
-      this.addNote()
+      this.addNote(this.textarea)
     },
     editNote1 (note) {
       this.editNote(note)
