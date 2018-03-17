@@ -5,44 +5,41 @@
       md-icon.md-primary event
     .call-history-container.md-layout.md-gutter.md-alignment-left
       md-field
+        md-icon event
+        md-input(v-model='taskDate')
+      md-field
+        md-input(v-model='taskTitle')
+        md-checkbox(v-model="alert")
+      md-field
         md-textarea(v-model='textarea')
-      md-button.md-primary(@click='addNote1') Add
+        md-icon description
+      md-button.md-primary(@click='addTask1') Add
       ul(class="md-layout-item md-size-50 md-medium-size-10 md-small-size-10 md-xsmall-size-100")
-        li(v-for='note in notes', :key='note.recordId')
+        li(v-for='task in tasks', :key='task.recordId')
           md-list.md-double-line
-            md-subheader Note
+            md-subheader Task
             md-list-item
-              md-button.md-icon-button.md-list-action(@click='addNote')
+              md-button.md-icon-button.md-list-action(@click='addTask1')
                 md-icon.md-primary event
               .md-list-item-text
-                span {{note.text}}
-                span {{moment(parseInt(note.startTime)).format('h:mm:ss a')}}
-                span {{note.favorite}}
-              md-button.md-icon-button.md-list-action(@click='toggleDialog(note)')
+                md-icon mic
+                span {{task.text}}
+                span {{moment(parseInt(task.startTime)).format('MMMM Do YYYY')}}
+                span {{moment(parseInt(task.startTime)).format('h:mm:ss a')}}
+                span {{task.favorite}}
+              md-button.md-icon-button.md-list-action(@click='toggleDialog(task)')
                 md-icon create
-              md-button.md-icon-button.md-list-action(@click='deleteNote1(note)')
+              md-button.md-icon-button.md-list-action(@click='deleteTask1(task)')
                 md-icon delete
 
     ul
-      li(v-for='note in notes', :key='note.entryId', @click='toggleDialog(contact)')
-        contact-card(:contact='contact')
+      li(v-for='task in tasks', :key='task.entryId', @click='toggleDialog(task)')
     md-dialog(:md-active.sync='showDialog', @md-closed='closeEdit')
       edit-task(:currentContact='currentContact', @closeEdit='closeEdit', :isNew='isNew')
 
 </template>
 
 <script>
-/*
-    {
-        "recordId": "1027986",
-        "startTime": "1518768317000",
-        "duration": "0",
-        "direction": "missed",
-        "callerName": "Burak KOCAK",
-        "callerDisplayNumber": "bkocak@genband.com",
-        "resourceLocation": "/rest/version/1/user/ravci@genband.com/logRecord/1027986"
-    }
-*/
 import Moment from 'moment'
 import { mapGetters, mapActions } from 'vuex'
 import EditTask from './EditTask'
@@ -51,9 +48,12 @@ export default {
   name: 'tasks',
   data () {
     return {
+      taskDate: '1520692473',
+      taskTitle: 'Task Title',
+      textarea: 'Write the task here',
+      alert: false,
       moment: Moment,
       currentContact: {},
-      textarea: true,
       showDialog: false,
       isNew: false
     }
@@ -68,31 +68,38 @@ export default {
     debugger
   },
   methods: {
-    ...mapActions(['updateActiveNote', 'addNote', 'editNote', 'deleteNote']),
-    addNote1 () {
-      this.addNote()
+    ...mapActions(['updateActiveTask', 'addTask', 'editTask', 'deleteTask']),
+    addTask1 () {
+      const newTask = {
+        text: this.textarea,
+        reminder: false,
+        taskDate: this.taskDate,
+        startTime: this.taskDate, // '1520692473',
+        alert: this.alert
+      }
+      this.addTask(newTask)
     },
-    editNote1 (note) {
-      this.editNote(note)
-      note = this.activeNoteText
+    editTask1 (task) {
+      this.editTask(task)
+      task = this.activeTask.text
     },
-    deleteNote1 (note) {
-      this.deleteNote(note)
-      note = this.activeNoteText
+    deleteTask1 (task) {
+      this.deleteTask(task)
+      task = this.activeTask.text
     },
     closeEdit () {
       this.isNew = false
       this.showDialog = false
     },
-    toggleDialog (note) {
-      this.currentContact = note
+    toggleDialog (task) {
+      this.currentContact = task
       this.$nextTick(() => {
         this.showDialog = true
       })
     }
   },
   computed: {
-    ...mapGetters(['notes', 'activeNoteText'])
+    ...mapGetters(['tasks', 'activeTask'])
   }
 }
 </script>

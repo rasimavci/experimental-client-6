@@ -14,11 +14,15 @@
           .md-layout.md-gutter
             .md-layout-item.md-small-size-100.md-xsmall-size-100
               md-field(:class="getValidationClass('firstName')")
-                label(for='first-name') Text part of ActiveTask , ActiveTask Text
-                md-input#first-name(name='first-name', autocomplete='given-name', v-model='contact.firstName', :disabled='sending || !editUser && !isNew')
-                  span.md-error(v-if='!$v.contact.firstName.required') The first name is required
-                  span.md-error(v-else-if='!$v.contact.firstName.minlength') Invalid first name
-
+              md-field
+                md-icon event
+                md-input(v-model='taskDate')
+              md-field
+                md-input(v-model='taskTitle')
+                md-checkbox(v-model="alert")
+              md-field
+                md-textarea(v-model='textarea')
+                md-icon description
           md-progress-bar(md-mode='indeterminate', v-if='sending')
           md-card-actions.button-selector
             md-button.md-primary(type='button', :disabled='sending', @click='editUser = !editUser', v-show='!editUser && !isNew') Edit task
@@ -26,7 +30,7 @@
             md-button.md-accent(type='button', :disabled='sending', @click='editUser = !editUser', v-show='editUser') Cancel
             md-button.md-accent(type='button', :disabled='sending', v-show='!editUser && !isNew', @click='activeConfirmDelete = true') Delete task
             md-button.color-green(type='button', :disabled='sending', @click='closeEdit') Close
-      md-snackbar(:md-active.sync='userSaved') The user {{ lastUser }} was saved with success!
+
 </template>
 
 <script>
@@ -54,6 +58,11 @@ export default {
   },
   data () {
     return {
+      firstname: 'deneme',
+      taskDate: '1520692473',
+      taskTitle: 'Task Title',
+      textarea: 'Write the task here',
+      alert: false,
       contact: {
         id: null,
         firstName: null

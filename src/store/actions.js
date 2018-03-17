@@ -48,8 +48,19 @@ export const addTask = ({ commit }, newTask) => {
   commit(types.ADD_TASK, newTask)
 }
 
+export const editTask = ({ commit }, e) => {
+  commit(types.EDIT_TASK, e.target.value)
+}
+
+export const deleteTask = ({ commit }) => {
+  commit(types.DELETE_TASK)
+}
+
+export const updateActiveTask = ({ commit }, task) => {
+  commit(types.SET_ACTIVE_TASK, task)
+}
+
 export const addNote = ({ commit }, newNote) => {
-  console.log('adding note')
   commit(types.ADD_NOTE, newNote)
 }
 
