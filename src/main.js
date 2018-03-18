@@ -6,7 +6,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Authentication from './Authentication'
-import { MdApp, MdField, MdButton, MdContent, MdMenu, MdList, MdSpeedDial, MdCard, MdRipple, MdTooltip, MdDialog, MdDialogConfirm, MdSnackbar, MdProgress, MdSwitch, MdToolbar, MdSubheader, MdCheckbox } from 'vue-material/dist/components'
+import { MdDatepicker, MdApp, MdField, MdButton, MdContent, MdMenu, MdList, MdSpeedDial, MdCard, MdRipple, MdTooltip, MdDialog, MdDialogConfirm, MdSnackbar, MdProgress, MdSwitch, MdToolbar, MdSubheader, MdCheckbox } from 'vue-material/dist/components'
 // import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 // import 'vue-material/dist/theme/default.css'
@@ -17,6 +17,7 @@ import KandyJS from './kandy'
 Vue.prototype.$kandyJS = KandyJS
 Vue.prototype.$_ = _
 Vue.config.productionTip = false
+Vue.use(MdDatepicker)
 Vue.use(MdApp)
 Vue.use(MdField)
 Vue.use(MdButton)

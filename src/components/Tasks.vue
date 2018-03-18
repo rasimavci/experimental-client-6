@@ -4,17 +4,15 @@
       h3.md-title(style='flex: 1') Tasks
       md-icon.md-primary event
     .call-history-container.md-layout.md-gutter.md-alignment-left
+      md-datepicker(v-model='selectedDate')
       md-field
-        md-icon event
-        md-input(v-model='taskDate')
-      md-field
-        md-input(v-model='taskTitle')
+        md-input(v-model='title')
         md-checkbox(v-model="alert")
       md-field
         md-textarea(v-model='textarea')
         md-icon description
       md-button.md-primary(@click='addTask1') Add
-      ul(class="md-layout-item md-size-50 md-medium-size-10 md-small-size-10 md-xsmall-size-100")
+      ul(class="md-scrollbar md-layout-item md-size-50 md-medium-size-10 md-small-size-10 md-xsmall-size-100")
         li(v-for='task in tasks', :key='task.recordId')
           md-list.md-double-line
             md-subheader Task
@@ -22,10 +20,9 @@
               md-button.md-icon-button.md-list-action(@click='addTask1')
                 md-icon.md-primary event
               .md-list-item-text
-                md-icon mic
                 span {{task.text}}
-                span {{moment(parseInt(task.startTime)).format('MMMM Do YYYY')}}
-                span {{moment(parseInt(task.startTime)).format('h:mm:ss a')}}
+                span {{moment(task.selectedDate).format('MMMM Do YYYY')}}
+                span {{moment(task.selectedDate).format('h:mm:ss a')}}
                 span {{task.favorite}}
               md-button.md-icon-button.md-list-action(@click='toggleDialog(task)')
                 md-icon create
@@ -48,8 +45,9 @@ export default {
   name: 'tasks',
   data () {
     return {
+      selectedDate: null,
       taskDate: '1520692473',
-      taskTitle: 'Task Title',
+      title: 'Task Title',
       textarea: 'Write the task here',
       alert: false,
       moment: Moment,
@@ -71,10 +69,11 @@ export default {
     ...mapActions(['updateActiveTask', 'addTask', 'editTask', 'deleteTask']),
     addTask1 () {
       const newTask = {
+        title: this.title,
         text: this.textarea,
         reminder: false,
-        taskDate: this.taskDate,
-        startTime: this.taskDate, // '1520692473',
+        selectedDate: this.selectedDate,
+        startTime: '', // 1520692473,
         alert: this.alert
       }
       this.addTask(newTask)
@@ -102,6 +101,7 @@ export default {
     ...mapGetters(['tasks', 'activeTask'])
   }
 }
+
 </script>
 
 <style scoped>

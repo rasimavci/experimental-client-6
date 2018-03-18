@@ -1,5 +1,23 @@
 <template>
 <ul class="main">
+
+    <li class="date">
+    <h3>Dec 20</h3>
+    <p>Schedule of Events</p>
+  </li>
+  <li class= "events cf">
+    <ul class="events-detail">
+      <li v-for='task in tasks' :key='task.entryId' @click='toggleDialog(task)'>
+        <a href="#">
+          <span class="event-time">2:00pm - {{moment(task.selectedDate).format('h:mm:ss a')}}</span>
+          <span class="event-name">{{task.title}}</span>
+          <br />
+          <span class="event-location">{{task.text}}</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
   <li class="date">
     <h3>Dec 18</h3>
     <p>Schedule of Events</p>
@@ -112,17 +130,22 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import Moment from 'moment'
 
 export default {
   methods: {
     ...mapActions(['']),
     openNewCallModal () {
       this.toggleProfileModal()
+    },
+    toggleDialog () {
+
     }
   },
   data () {
     return {
+      moment: Moment,
       selectedBook: 1,
       checkedList: [],
       filterByStatus: [],
@@ -138,7 +161,8 @@ export default {
     },
     checkedAll () {
       return true
-    }
+    },
+    ...mapGetters(['tasks', 'activeTask'])
   }
 }
 </script>

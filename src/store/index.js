@@ -79,12 +79,6 @@ const store = new Vuex.Store({
       state.selfinfo = selfinfo
     },
     [types.ADD_TASK] (state, newTask) {
-      // console.log('New task added ' + text)
-      // const newTask = {
-      //   text: text,
-      //   favorite: false,
-      //   startTime: 1520692473
-      // }
       state.tasks.push(newTask)
       state.activeTask = newTask
     },
@@ -93,7 +87,7 @@ const store = new Vuex.Store({
       const newNote = {
         text: text,
         favorite: false,
-        startTime: 1520692473
+        startTime: 1521838800 // 1520692473
       }
       state.notes.push(newNote)
       state.activeNote = newNote
