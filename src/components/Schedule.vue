@@ -1,137 +1,33 @@
+/* eslint-disable */
+// eslint-no-unused-vars
 <template>
-<ul class="main">
+  <ul class="main">
 
-    <li class="date">
-    <h3>Dec 20</h3>
-    <p>Schedule of Events</p>
-  </li>
-  <li class= "events cf">
-    <ul class="events-detail">
-      <li v-for='task in tasks' :key='task.entryId' @click='toggleDialog(task)'>
-        <a href="#">
-          <span class="event-time">2:00pm - {{moment(task.selectedDate).format('h:mm:ss a')}}</span>
-          <span class="event-name">{{task.title}}</span>
-          <br />
-          <span class="event-location">{{task.text}}</span>
-        </a>
+    <li v-for='tasks in groupedTasks' :key='tasks.id'>
+      <li class="date">
+        <h3>{{moment(tasks[0]).format("MMM Do YY")}}</h3>
+        <p>Schedule of Events</p>
       </li>
-    </ul>
-  </li>
-
-  <li class="date">
-    <h3>Dec 18</h3>
-    <p>Schedule of Events</p>
-  </li>
-  <li class= "events">
-    <ul class="events-detail">
-      <li>
-        <a href="#">
-          <span class="event-time">2:00pm - </span>
-          <span class="event-name">Kickoff Ceremony</span>
-          <br />
-          <span class="event-location">Headquarters</span>
-        </a>
+      <li class="events cf">
+        <ul class="events-detail">
+          <li v-for='task in tasks' :key='task.id' @click='toggleDialog(task)'>
+            <a href="#">
+              <span class="event-time">2:00pm - {{moment(task.date).format('h:mm:ss a')}}</span>
+              <span class="event-name">{{task.title}}</span>
+              <br />
+              <span class="event-location">{{task.description}}</span>
+            </a>
+          </li>
+        </ul>
       </li>
 
-       <li>
-        <a href="#">
-          <span class="event-time">2:00pm - </span>
-          <span class="event-name">Kickoff Ceremony</span>
-          <br />
-          <span class="event-location">Headquarters</span>
-        </a>
-      </li>
-
-       <li>
-        <a href="#">
-          <span class="event-time">2:00pm - </span>
-          <span class="event-name">Kickoff Ceremony</span>
-          <br />
-          <span class="event-location">Headquarters</span>
-        </a>
-      </li>
-
-       <li>
-        <a href="#">
-          <span class="event-time">2:00pm - </span>
-          <span class="event-name">Kickoff Ceremony</span>
-          <br />
-          <span class="event-location">Headquarters</span>
-        </a>
-      </li>
-
-       <li>
-        <a href="#">
-          <span class="event-time">2:00pm - </span>
-          <span class="event-name">Kickoff Ceremony</span>
-          <br />
-          <span class="event-location">Headquarters</span>
-        </a>
-      </li>
-    </ul>
-
-  </li>
-
-    <li class="date">
-    <h3>Dec 19</h3>
-    <p>Schedule of Events</p>
-  </li>
-  <li class= "events cf">
-    <ul class="events-detail">
-      <li>
-        <a href="#">
-          <span class="event-time">2:00pm - </span>
-          <span class="event-name">Kickoff Ceremony</span>
-          <br />
-          <span class="event-location">Headquarters</span>
-        </a>
-      </li>
-
-       <li>
-        <a href="#">
-          <span class="event-time">2:00pm - </span>
-          <span class="event-name">Kickoff Ceremony</span>
-          <br />
-          <span class="event-location">Headquarters</span>
-        </a>
-      </li>
-
-       <li>
-        <a href="#">
-          <span class="event-time">2:00pm - </span>
-          <span class="event-name">Kickoff Ceremony</span>
-          <br />
-          <span class="event-location">Headquarters</span>
-        </a>
-      </li>
-
-       <li>
-        <a href="#">
-          <span class="event-time">2:00pm - </span>
-          <span class="event-name">Kickoff Ceremony</span>
-          <br />
-          <span class="event-location">Headquarters</span>
-        </a>
-      </li>
-
-       <li>
-        <a href="#">
-          <span class="event-time">2:00pm - </span>
-          <span class="event-name">Kickoff Ceremony</span>
-          <br />
-          <span class="event-location">Headquarters</span>
-        </a>
-      </li>
-    </ul>
-
-  </li>
-
-</ul>
+  </ul>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import Moment from 'moment'
+import _ from 'lodash'
 
 export default {
   methods: {
@@ -162,16 +58,22 @@ export default {
     checkedAll () {
       return true
     },
-    ...mapGetters(['tasks', 'activeTask'])
+    ...mapGetters(['tasks', 'activeTask']),
+    groupedTasks () {
+      console.log('Grouped tasks ' + JSON.stringify(_.groupBy(this.tasks, 'date')))
+      return _.groupBy(this.tasks, 'date')
+    }
   }
 }
 </script>
 
 <style scoped>
-*, *:before, *:after {
--moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-box-sizing: border-box;
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ul.main {
@@ -179,11 +81,15 @@ ul.main {
   max-width: 75%;
   margin: 20px auto;
 }
-h3 {padding: 0; margin: 0;}
+
+h3 {
+  padding: 0;
+  margin: 0;
+}
 
 .date {
   width: 17%;
-  padding: 15% 1% 0 0 ;
+  padding: 15% 1% 0 0;
   float: left;
 }
 
@@ -207,7 +113,7 @@ h3 {padding: 0; margin: 0;}
   max-width: 550px;
 }
 
-.events-detail li{
+.events-detail li {
   padding: 10px;
   border-bottom: 1px dashed #ccc;
   line-height: 22px;
@@ -231,20 +137,20 @@ h3 {padding: 0; margin: 0;}
 }
 
 .event-location {
-    font-size: .8em;
-    color: tomato;
-    margin-left: 70px;
+  font-size: .8em;
+  color: tomato;
+  margin-left: 70px;
 }
 
 @media all and (max-width: 641px) {
-    .date {
-      width: 100%;
-      border-bottom: 1px solid #ccc;
-      margin-bottom: 10px;
-    }
+  .date {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
 
   .events {
-    border:none;
+    border: none;
     width: 100%;
     margin-top: 0;
   }
@@ -254,7 +160,7 @@ h3 {padding: 0; margin: 0;}
   }
 
   li.date p {
-    margin:0;
+    margin: 0;
   }
 }
 </styled>

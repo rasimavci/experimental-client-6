@@ -106,6 +106,12 @@ const store = new Vuex.Store({
     },
     [types.SET_ACTIVE_NOTE] (state, note) {
       state.activeNote = note
+    },
+    [types.SET_TASKS] (state, tasks) {
+      state.tasks = _.sortBy(tasks, t => { return t.date })
+    },
+    [types.SET_NOTES] (state, notes) {
+      state.notes = _.sortBy(notes, n => { return n.date })
     }
   }
 })
