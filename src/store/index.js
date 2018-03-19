@@ -84,9 +84,11 @@ const store = new Vuex.Store({
     },
     [types.ADD_NOTE] (state, text) {
       console.log('New note added ' + text)
+      let today = new Date()
       const newNote = {
         text: text,
         favorite: false,
+        creationTime: today,
         startTime: 1521838800 // 1520692473
       }
       state.notes.push(newNote)
