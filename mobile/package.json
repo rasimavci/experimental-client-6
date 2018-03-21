@@ -1,0 +1,13 @@
+{
+  "name": "com.callapp.mobile",
+  "version": "0.0.1",
+  "displayName": "Call-app-mobile",
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "cordova-android": "~7.0.0"
+  }
+}
