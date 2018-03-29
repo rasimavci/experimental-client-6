@@ -187,7 +187,6 @@ export default {
       } else {
         this.screenShareOptions.localVideoContainer = document.getElementById('localShareScreenContainer')
         this.screenShareOptions.remoteVideoContainer = document.getElementById('remoteShareScreenContainer')
-        debugger
         this.$kandyJS.startScreenshare(this.screenShareOptions)
       }
       this.callingButtons.screenShare = !this.callingButtons.screenShare

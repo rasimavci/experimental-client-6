@@ -6,8 +6,8 @@
         .md-toolbar-section-start
           h3.md-title(style='flex: 1') Contacts
         .md-toolbar-section-end
-          md-button.md-accent Refresh status
-          md-button.md-primary(@click='newContact') Add contact
+          md-button.md-accent Refresh
+        md-button.md-primary(@click='newContact') Add contact
       .md-toolbar-row
         .md-layout#secondRow
           .md-layout-item.md-size-40
@@ -15,7 +15,7 @@
               label search...
               md-input(v-model='search.criteria')
   .contact-container
-    ul
+    ul.deneme
       li(v-for='contact in filtredContacts', :key='contact.entryId', @click='toggleDialog(contact)')
         contact-card(:contact='contact')
     md-dialog(:md-active.sync='showDialog', @md-closed='closeEdit')
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 import EditContact from './EditContact'
 import ContactCard from './ContactCard'
 export default {
@@ -97,24 +97,30 @@ export default {
 </script>
 
 <style scoped>
-#contact{
+#contact {
   height: 100vh;
   overflow-y: scroll;
 }
+
 ul {
   list-style-type: none;
   min-width: 300px;
   width: 90%;
+  padding: 10px;
 }
-.md-card{
+
+.md-card {
   /* min-width: 300px;
   width: 50%; */
   margin-bottom: 20px;
+  width: 90%;
 }
-.md-dialog{
+
+.md-dialog {
   width: 100%;
 }
-#secondRow{
+
+#secondRow {
   width: 100vw;
 }
 </style>

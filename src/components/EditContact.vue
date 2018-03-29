@@ -217,7 +217,6 @@ export default {
       this.activeConfirmDelete = false
     },
     deleteContact () {
-      debugger
       this.$kandyJS.removeContact(this.contact.nickname)
     },
     getValidationClass (fieldName) {

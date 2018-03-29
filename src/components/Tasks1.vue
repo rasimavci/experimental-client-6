@@ -66,11 +66,10 @@ export default {
     // this.$kandyJS.getCallHistory()
     let m = Moment
     console.log(m)
-    debugger
   },
   methods: {
     ...mapActions(['updateActiveTask', 'addTask', 'editTask', 'deleteTask', 'setTasks']),
-    saveTask () {
+    saveTask() {
       let id = 0
       let _tasks = this.$_.sortBy(this.tasks, t => { return t.id })
       if (_tasks.length > 0) {

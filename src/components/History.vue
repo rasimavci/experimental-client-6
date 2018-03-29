@@ -33,7 +33,7 @@
     }
 */
 import Moment from 'moment'
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'history',
   data () {
@@ -45,7 +45,6 @@ export default {
     this.$kandyJS.getCallHistory()
     let m = Moment
     console.log(m)
-    debugger
   },
   computed: {
     ...mapGetters(['callHistory'])
@@ -57,13 +56,15 @@ export default {
 </script>
 
 <style scoped>
-#history{
-    height: 100vh;
+#history {
+  height: 100vh;
   overflow-y: scroll;
 }
-.call-history-container > ul{
+
+.call-history-container>ul {
   list-style-type: none;
 }
+
 li {
   list-style-type: none;
 }

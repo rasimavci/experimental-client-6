@@ -3,14 +3,14 @@
 <template>
   <ul class="main">
 
-    <li v-for='tasks in groupedTasks' :key='tasks.id'>
-      <li class="date">
-        <h3>{{moment(tasks[0]).format("MMM Do YY")}}</h3>
+    <li v-for='(value, key) in groupedTasks' :key='key'>
+      <div class="date">
+        <h3>{{moment(key).format("MMM Do YY")}}</h3>
         <p>Schedule of Events</p>
-      </li>
+
       <li class="events cf">
         <ul class="events-detail">
-          <li v-for='task in tasks' :key='task.id' @click='toggleDialog(task)'>
+          <li v-for='task in value' :key='task.id' @click='toggleDialog(task)'>
             <a href="#">
               <span class="event-time">2:00pm - {{moment(task.date).format('h:mm:ss a')}}</span>
               <span class="event-name">{{task.title}}</span>
@@ -21,7 +21,11 @@
         </ul>
       </li>
 
+      </div>
+
+</li>
   </ul>
+
 </template>
 
 <script>

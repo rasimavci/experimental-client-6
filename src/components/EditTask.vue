@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 import { validationMixin } from 'vuelidate'
 import {
   required,
@@ -102,7 +102,6 @@ export default {
       this.activeConfirmDelete = false
     },
     deleteContact () {
-      debugger
       this.$kandyJS.removeContact(this.contact.nickname)
     },
     getValidationClass (fieldName) {
@@ -177,11 +176,11 @@ export default {
 </script>
 
 <style scoped>
-
-#editTask{
+#editTask {
   height: 100vh;
   overflow-y: scroll;
 }
+
 .md-progress-bar {
   position: absolute;
   top: 0;
@@ -189,13 +188,15 @@ export default {
   left: 0;
 }
 
-.button-selector .md-warn{
+.button-selector .md-warn {
   color: yellow;
 }
-.color-green{
+
+.color-green {
   color: green;
 }
-.md-tooltip{
+
+.md-tooltip {
   z-index: 10;
 }
 </style>

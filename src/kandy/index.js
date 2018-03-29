@@ -91,7 +91,7 @@ const Kandyjs = {
       console.log(res)
       store.dispatch('setContactPresence', res)
     })
-    Kandyjs.kandy.on('presence:error', res => { debugger })
+    Kandyjs.kandy.on('presence:error', res => {})
     Kandyjs.kandy.on('callHistory:change', res => {
       let history = Kandyjs.kandy.call.history.get()
       console.log(history)

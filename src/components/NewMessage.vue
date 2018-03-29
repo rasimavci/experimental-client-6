@@ -36,7 +36,7 @@ import NoImg from '../assets/img/noimage.jpg'
 import ContactCard from './ContactCard'
 import LeftChatBubble from './LeftChatBubble'
 import RightChatBubble from './RightChatBubble'
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'newMessage',
   data () {
@@ -122,7 +122,6 @@ export default {
     },
     selectContact (contact) {
       this.selectedContacts = []
-      debugger
       this.selectedContacts.push(contact)
       this.activeDialog = false
     },
@@ -140,28 +139,33 @@ export default {
 </script>
 
 <style scoped>
-.messages-container{
+.messages-container {
   height: calc(100vh - 50px);
   overflow-y: scroll;
 }
-.messages-container ul{
+
+.messages-container ul {
   width: 400px;
 }
-.bottombar{
+
+.bottombar {
   height: 50px;
   width: 100vw;
   margin-left: 80px;
   background-color: #465A69;
 }
-.md-dialog ul{
+
+.md-dialog ul {
   list-style-type: none;
   overflow-y: scroll;
   padding: 10px;
 }
-.md-dialog ul li{
+
+.md-dialog ul li {
   padding-bottom: 5px;
 }
-.selected-contact{
+
+.selected-contact {
   background: lightsteelblue;
 }
 </style>

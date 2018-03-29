@@ -45,7 +45,6 @@ export default {
     // this.$kandyJS.getCallHistory()
     let m = Moment
     console.log(m)
-    debugger
   },
   computed: {
     ...mapGetters(['calls'])

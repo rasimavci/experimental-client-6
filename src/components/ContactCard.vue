@@ -54,12 +54,14 @@ export default {
 </script>
 
 <style scoped>
-.last-message{
+.last-message {
   color: darkgray;
 }
-.short-card{
+
+.short-card {
   max-height: 100px;
 }
+
 .short-card .md-card-header {
   padding: 10px;
 }
