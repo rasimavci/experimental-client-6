@@ -3,13 +3,13 @@
     router-link(to='/')
       i.glyphicon.glyphicon-user(data-popover='true')
     i.glyphicon.glyphicon-phone-alt(@click='openNewCallModal')
-    //- router-link(to='/')
+    //- router-link(to='/map')
     //-   i.glyphicon.glyphicon-home
     router-link(to='/sessions')
       i.glyphicon.glyphicon-th-list
     router-link(to='/tasks')
       i.glyphicon.glyphicon-list-alt
-    //- router-link(to='/star')
+    //- router-link(to='/chart')
     //-   i.glyphicon.glyphicon-star
     router-link(to='/contact')
       i.glyphicon.glyphicon-book
@@ -19,17 +19,10 @@
       i.glyphicon.glyphicon-calendar
     router-link(to='/message')
       i.glyphicon.glyphicon-download-alt
-    i.glyphicon.glyphicon-envelope()
+    router-link(to='/mail')
+      i.glyphicon.glyphicon-envelope()
     router-link(to='/history')
       i.glyphicon.glyphicon-time
-    router-link(to='/login')
-      i.glyphicon.glyphicon-off()
-    router-link(to='/weather')
-      i.glyphicon.glyphicon-cloud
-    router-link(to='/taskmanager')
-    i.glyphicon.glyphicon-share
-    router-link(to='/schedule')
-    i.glyphicon.glyphicon-blackboard()
 </template>
 
 <script>

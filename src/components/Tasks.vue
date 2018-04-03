@@ -11,6 +11,7 @@
         .md-layout-item.md-small-size-100.md-xsmall-size-100
           md-field(:class="getValidationClass('date')")
             md-datepicker(v-model='task.date')
+          time-picker(v-model='task.time')
             span.md-error(v-if='!$v.task.date.required') The task title is required
         .md-layout-item.md-small-size-100.md-xsmall-size-100
           md-field(:class="getValidationClass('title')")
@@ -46,6 +47,8 @@
 
 <script>
 import TasksService from '../TasksService'
+import TimePicker from './TimePicker.vue'
+
 import Moment from 'moment'
 import { mapGetters, mapActions } from 'vuex'
 import { validationMixin } from 'vuelidate'
@@ -76,6 +79,7 @@ export default {
   },
   validations: {
     task: {
+      time: '',
       date: {
         required
       },
@@ -90,7 +94,8 @@ export default {
     }
   },
   components: {
-    editTask: EditTask
+    editTask: EditTask,
+    TimePicker: TimePicker
   },
   mounted () {
     this.setTasks(this.$_.cloneDeep(TasksService.getTasks()))
@@ -121,6 +126,7 @@ export default {
       }
     },
     saveTask () {
+      console.log('time ' + JSON.stringify(TimePicker))
       let id = 0
       let _tasks = this.$_.sortBy(this.tasks, t => { return t.id })
       if (_tasks.length > 0) {

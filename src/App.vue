@@ -10,13 +10,16 @@
 import Toolbar from './components/Toolbar'
 import NewCallModal from './components/ModalNewCall'
 import IncomingCallModal from './components/ModalIncomingCall'
+import TimePicker from './components/TimePicker'
+
 import { mapGetters } from 'vuex'
 export default {
   name: 'App',
   components: {
     toolbar: Toolbar,
     newCallModal: NewCallModal,
-    incomingCallModal: IncomingCallModal
+    incomingCallModal: IncomingCallModal,
+    TimePicker: TimePicker
   },
   computed: {
     ...mapGetters(['credentials', 'newCallModal', 'incomingCallModal'])

@@ -67,13 +67,13 @@ export default {
 .keypad-container-contacts{
   background:#30414D;
   transition:width .4s ease-in-out 0s;
-  min-height: 400px;
+  min-height: 500px;
   overflow-y: scroll;
-  max-height: 400px;
+  max-height: 600px;
 }
 .key-container{
   text-align: center;
-  height: 50px;
+  height: 150px;
 }
 .key-container:hover{
   background: teal;

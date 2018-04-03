@@ -11,6 +11,7 @@ import TaskManager from '@/components/TaskManager'
 import Notes from '@/components/Notes'
 import Tasks from '@/components/Tasks'
 import Schedule from '@/components/Schedule'
+import Mail from '@/components/Mail'
 
 Vue.use(Router)
 
@@ -70,6 +71,11 @@ export default new Router({
       path: '/schedule',
       name: 'Schedule',
       component: Schedule
+    },
+    {
+      path: '/mail',
+      name: 'Mail',
+      component: Mail
     }
   ]
 })

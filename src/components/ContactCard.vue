@@ -59,7 +59,7 @@ export default {
 }
 
 .short-card {
-  max-height: 100px;
+  max-height: 130px;
 }
 
 .short-card .md-card-header {

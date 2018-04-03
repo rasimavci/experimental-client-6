@@ -36,6 +36,29 @@ Vue.use(MdSwitch)
 Vue.use(MdToolbar)
 Vue.use(MdSubheader)
 Vue.use(MdCheckbox)
+
+let createMap = () => {
+  const promise = new Promise(function (resolve, reject) {
+    let script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.src = 'https://webapi.amap.com/maps?v=1.3&key=1f648c12a2709a14b0e79551fdc5f791'
+    document.body.appendChild(script)
+    if (script.nodeName === 'SCRIPT') {
+      resolve()
+    } else {
+      reject(new Error('Could not script image at ' + script.src))
+    }
+  })
+  return promise
+}
+createMap().then(function () {
+  console.log('Read high German map success')
+  // 加載當前的ip定位
+}).catch(function (error) {
+  // 处理 getJSON 和 前一个回调函数运行时发生的错误
+  console.log('An error occurred！', error)
+})
+
 router.beforeEach((to, from, next) => {
   console.log(store.getters.loginData)
   if (to.path !== '/login') {

@@ -1,8 +1,14 @@
 /* eslint-disable */
 // eslint-no-unused-vars
 <template>
+<div>
   <ul class="main">
-
+<div class="dialog-container">
+    <md-toolbar class="md-primary" md-elevation="1">
+     <h3 class="md-title" style='flex: 1'>Schedule</h3>
+    </md-toolbar>
+</div>
+<ul style="width: 600px; height: 800px; overflow: auto">
     <li v-for='(value, key) in groupedTasks' :key='key'>
       <div class="date">
         <h3>{{moment(key).format("MMM Do YY")}}</h3>
@@ -20,12 +26,12 @@
           </li>
         </ul>
       </li>
-
       </div>
 
 </li>
+</ul>
   </ul>
-
+</div>
 </template>
 
 <script>
@@ -72,6 +78,11 @@ export default {
 </script>
 
 <style scoped>
+.tasks {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
 *,
 *:before,
 *:after {
@@ -82,8 +93,8 @@ export default {
 
 ul.main {
   list-style: none;
-  max-width: 75%;
-  margin: 20px auto;
+  max-width: 77%;
+  margin: 0px auto;
 }
 
 h3 {
